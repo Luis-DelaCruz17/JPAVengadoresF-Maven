@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoServEditDlg" widgetVar="TipoServEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.EditTipoServTitle}">
+            <h:form id="TipoServEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoServController.selected != null}">
+                        <p:outputLabel value="#{vista.EditTipoServLabel_nomtipserv}" for="nomtipserv" />
+                        <p:inputText id="nomtipserv" value="#{tipoServController.selected.nomtipserv}" title="#{vista.EditTipoServTitle_nomtipserv}" />
+                        <p:outputLabel value="#{vista.EditTipoServLabel_subtipserv}" for="subtipserv" />
+                        <p:inputText id="subtipserv" value="#{tipoServController.selected.subtipserv}" title="#{vista.EditTipoServTitle_subtipserv}" />
+                        <p:outputLabel value="#{vista.EditTipoServLabel_pretipserv}" for="pretipserv" />
+                        <p:inputText id="pretipserv" value="#{tipoServController.selected.pretipserv}" title="#{vista.EditTipoServTitle_pretipserv}" />
+                        <p:outputLabel value="#{vista.EditTipoServLabel_esttipserv}" for="esttipserv" />           
+                        <p:selectOneMenu id="esttipserv" value="#{tipoServController.selected.esttipserv}" required="true" requiredMessage="Añadir Estilista">
+                            <f:selectItem itemLabel="SELECCIONE" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Nivel 1" itemValue="Nivel 1" />
+                            <f:selectItem itemLabel="Nivel 2" itemValue="Nivel 2" />
+                            <f:selectItem itemLabel="No" itemValue="No" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditTipoServLabel_bartipserv}" for="bartipserv" />                       
+                        <p:selectOneMenu id="bartipserv" value="#{tipoServController.selected.bartipserv}" required="true" requiredMessage="Añadir Estilista">
+                            <f:selectItem itemLabel="SELECCIONE" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Si" itemValue="Si" />                            
+                            <f:selectItem itemLabel="No" itemValue="No" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{vista.EditTipoServLabel_instipserv}" for="instipserv" />                        
+                        <p:selectOneMenu id="instipserv" value="#{tipoServController.selected.instipserv}" required="true" requiredMessage="Añadir Estilista">
+                            <f:selectItem itemLabel="SELECCIONE" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Si" itemValue="Si" />                            
+                            <f:selectItem itemLabel="No" itemValue="No" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoServController.update}" value="#{vista.Save}" update="display,:TipoServListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoServEditDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="TipoServEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

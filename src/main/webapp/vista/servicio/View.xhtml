@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServicioViewDlg" widgetVar="ServicioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewServicioTitle}">
+            <h:form id="ServicioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{servicioController.selected != null}">
+                        <h:outputText value="N°"/>
+                        <h:outputText value="#{servicioController.selected.codserv}" title="#{vista.ViewServicioTitle_codserv}"/>
+                        
+                        <h:outputText value="CLIENTE"/>
+                        <h:outputText value="#{servicioController.selected.codclie.nombclie}" title="#{vista.ViewServicioTitle_codclie}"/>
+                        
+                        <h:outputText value="ESTILO"/>
+                        <h:outputText value="#{servicioController.selected.codtipserv.esttipserv},
+                                      S/.#{servicioController.selected.codtipserv.pretipserv}" title="#{vista.ViewServicioTitle_codtipserv}"/>
+                        
+                        <h:outputText value="PROFESIONAL"/>
+                        <h:outputText value="#{servicioController.selected.codprof.tipprof},
+                                      #{servicioController.selected.codprof.preprof}%" title="#{vista.ViewServicioTitle_codprof}"/>
+                        
+                        <h:outputText value="TOTAL S/."/>
+                        <h:outputText value="#{servicioController.selected.totpreserv}" title="#{vista.ViewServicioTitle_totpreserv}"/>
+                        
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="ServicioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

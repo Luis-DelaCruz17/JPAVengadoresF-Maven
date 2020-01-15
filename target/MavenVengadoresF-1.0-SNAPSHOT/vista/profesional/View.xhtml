@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProfesionalViewDlg" widgetVar="ProfesionalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewProfesionalTitle}">
+            <h:form id="ProfesionalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profesionalController.selected != null}">
+                        <h:outputText value="#{vista.ViewProfesionalLabel_codprof}"/>
+                        <h:outputText value="#{profesionalController.selected.codprof}" title="#{vista.ViewProfesionalTitle_codprof}"/>
+                        <h:outputText value="#{vista.ViewProfesionalLabel_tipprof}"/>
+                        <h:outputText value="#{profesionalController.selected.tipprof}" title="#{vista.ViewProfesionalTitle_tipprof}"/>
+                        <h:outputText value="#{vista.ViewProfesionalLabel_preprof}"/>
+                        <h:outputText value="#{profesionalController.selected.preprof}" title="#{vista.ViewProfesionalTitle_preprof}"/>
+                        <h:outputText value="#{vista.ViewProfesionalLabel_estprof}"/>
+                        <h:outputText value="#{profesionalController.selected.estprof}" title="#{vista.ViewProfesionalTitle_estprof}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="ProfesionalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
